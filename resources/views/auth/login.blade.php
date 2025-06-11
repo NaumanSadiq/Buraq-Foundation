@@ -7,14 +7,11 @@
 <div class="d-flex flex-column flex-root">
     <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" style="background-image: url(assets/media/illustrations/sketchy-1/14-dark.png">
         <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
-            <div class="mb-12">
-                <img alt="Logo" src="{{asset('assets/images/amal.png')}}" class="h-80px">
-            </div>
             <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
                 <form class="form w-100" action="{{route('login')}}" method="post">
                     @csrf
                     <div class="text-center mb-10">
-                        <h1 class="text-dark mb-3">Sign In to Amal Foundation</h1>
+                        <h1 class="text-dark mb-3">Sign In</h1>
                     </div>
                     <div class="fv-row mb-10">
                         <label class="form-label fs-6 fw-bolder text-dark">Email</label>

@@ -1,6 +1,5 @@
 <div id="kt_header" style="" class="header align-items-stretch">
     <div class="header-brand">
-        <img alt="Logo" src="{{asset('assets/images/amal.png')}}" class="ms-2 h-55px h-lg-55px">
         <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-minimize" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
             <span class="svg-icon svg-icon-1 me-n1 minimize-default">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
