@@ -1,64 +1,80 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 🎗️ Buraq Foundation Portal
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> A Laravel-based portal to manage community support applications with a multi-stage approval workflow.
 
-## About Laravel
+🚀 Project Overview
+Buraq Foundation portal streamlines the intake, review, and approval of financial/community support applications. Three roles (Data Entry Operator, Admin, Super Admin) collaborate in a clear, multi-step workflow:
+1. Data Entry Operators submit detailed applications.
+2. Admin reviews and approves/rejects.
+3. Super Admin gives final sign-off only after Admin approval (cannot override Admin rejection).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Built solo with Laravel & Blade, this project emphasizes security, data integrity, and a responsive UI foundation.
+✨ Key Features
+- 🎯 **Role-Based Access & Dashboards**  
+  - Data Entry Operator: register/login; submit & track own applications.  
+  - Admin: view incoming applications; approve or reject, blocking further escalation on rejection.  
+  - Super Admin: manage Admin/Data Entry accounts; final approval step only if Admin approved.  
+- 📝 **Comprehensive Application Form**  
+  - Captures personal info, family demographics, income/expenses, address, CNIC, education, narrative details.  
+  - Validation via Form Requests: required fields, numeric ranges, conditional logic (e.g., rent if not owned).  
+  - Soft deletes & timestamps for auditability.  
+- 🔄 **Multi-Stage Approval Workflow**  
+  - Submission → Admin dashboard → (if approved) → Super Admin dashboard → final decision.  
+  - Status tracking visible to each role; hooks for email/notification triggers at each step.  
+- 👥 **User & Role Management**  
+  - CRUD for Admin & Data Entry Operator accounts by Super Admin.  
+  - Role constants (`SUPER_ADMIN_ROLE_ID`, `ADMIN_ROLE_ID`, `DATA_ENTRY_ROLE_ID`) in middleware/policies.  
+- 🔒 **Security & Validation**  
+  - Laravel Auth for login/registration; middleware to guard routes per role.  
+  - Form Requests for robust server-side validation; protection against unauthorized access and mass-assignment.  
+- 💾 **Database & Data Integrity**  
+  - Migrations & seeders for `users`, `application_forms`, roles, and sample data.  
+  - Eloquent relationships: User → Applications; Admin/SuperAdmin associations on approvals.  
+- 📱 **Responsive UI Foundation**  
+  - Blade templating with Bootstrap 5 (or preferred CSS) for clean layouts.  
+  - Sidebar navigation, topbar with user context, responsive form layouts.  
+- ✉️ **Notifications (Optional Hooks)**  
+  - Mailables & queued jobs to notify Admin/Super Admin on new submissions, and applicants on status changes.  
+- 🧪 **Testing & Reliability**  
+  - PHPUnit tests for critical flows (submission, approval transitions, auth-protected routes).  
+- 📖 **Documentation & Setup**  
+  - Clear README instructions for environment setup, migrations/seeders, and running queues.
+  - Seeded demo accounts for quick testing of each role.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+🛠️ Tech Stack
+- **Backend:** Laravel (8.x or latest), Eloquent ORM, MySQL
+- **Frontend (Blade):** Blade templates, Bootstrap 5, minimal JavaScript/Alpine.js for interactivity
+- **Authentication & Authorization:** Laravel Auth, Sanctum or built-in guards, Gates/Policies
+- **Data Integrity:** Migrations, seeders, Form Requests, soft deletes
+- **Notifications:** Laravel Mailables + Queues (Redis/Database/Beanstalkd as configured)
+- **Testing:** PHPUnit
+- **DevOps & Deployment:** Git (GitLab/GitHub), Composer, environment variables, queue workers, Forge/Envoyer or custom scripts
+- **Version Control:** Git with a clear commit history illustrating iterative improvements
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+📥 Getting Started
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Prerequisites
+- PHP >= 7.4 (compatible with chosen Laravel version)
+- Composer
+- MySQL (or preferred database)
+- Node & npm (if using frontend asset compilation or Alpine.js setup)
+- Mail driver (SMTP, Mailgun, etc.) configured in `.env`
+- Queue driver (database/Redis/etc.) configured in `.env`
 
-## Laravel Sponsors
+How to run project:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Clone the repo  
+    composer install
+    npm install    # if using frontend asset build or Alpine.js tooling
+    npm run dev    # optional, if assets need compilation
+2. Copy .env.example to .env
+    Configure database credentials, mail settings, and queue driver in .env.
+    Generate app key: php artisan key:generate
+3. Database migrations & seeders
+    php artisan migrate
+    php artisan db:seed
+4. php artisan serve
