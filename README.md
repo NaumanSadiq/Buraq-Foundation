@@ -68,9 +68,9 @@ Built solo with Laravel & Blade, this project emphasizes security, data integrit
 How to run project:
 
 1. Clone the repo  
-    composer install
-    npm install    # if using frontend asset build or Alpine.js tooling
-    npm run dev    # optional, if assets need compilation
+    - composer install
+    - npm install    # if using frontend asset build or Alpine.js tooling
+    - npm run dev    # optional, if assets need compilation
 2. Copy .env.example to .env
     Configure database credentials, mail settings, and queue driver in .env.
     Generate app key: php artisan key:generate
